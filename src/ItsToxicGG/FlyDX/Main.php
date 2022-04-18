@@ -17,7 +17,7 @@ class Main extends PluginBase{
       $this->getLogger()->info("FlyDX has been Enabled!");
   }
   
-  public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool{
+  public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool{
       if($cmd->getName() === "fly"){
           if($sender instanceof Player){
               $this->form($sender);

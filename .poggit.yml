@@ -5,4 +5,7 @@ branches:
 projects:
   FlyDX:
     path: ""
+    libs:
+       - src: Vecnavium/FormsUI/FormsUI
+         version ^
 ...

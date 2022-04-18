@@ -7,7 +7,7 @@ use pocketmine\command\Command;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use pocketmine\event\player\PlayerJoinEvent;
-use pocketmine\Plugin\PluginBase;
+use pocketmine\plugin\PluginBase;
 
 use Vecnavium\FormsUI\CustomForm;
 

@@ -34,7 +34,7 @@ class Main extends PluginBase{
       $form = new CustomForm(function(Player $player, array $data){ 
           if($data === null){
           }
-          switch($data[1])){
+          switch($data[1]){
               case true:
                   $player->setFlying(true);
                   $player->setAllowFlight(true);

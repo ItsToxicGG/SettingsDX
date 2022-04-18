@@ -36,10 +36,14 @@ class Main extends PluginBase{
           }
           switch($data[1])){
               case true:
+                  $player->setFlying(true);
+                  $player->setAllowFlight(true);
                   $player->sendMessage("§aFly Is Active");
               break;
 
               case false:
+                  $player->setFlying(false);
+                  $player->setAllowFlight(false);
                   $player->sendMessage("§cFly is Not Active"); 
               break;
           } 

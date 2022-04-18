@@ -1,0 +1,15 @@
+name: FlyDX
+description: A Simple Fly Plugin That Supports FormAPI
+version: 1.0-indev
+author: ItsToxicGG
+main: ItsToxicGG\FlyDX\Main
+
+commands:
+  fly:
+    description: Send Form
+    permission: flydx.cmd
+
+permissions:
+  fly.cmd:
+    description: Send Form Permission
+    default: true

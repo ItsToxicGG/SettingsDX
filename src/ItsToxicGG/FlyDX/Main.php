@@ -19,7 +19,7 @@ class Main extends PluginBase{
   
   public function onCommand(CommandSender $sender, Command $command, string $label, array $args): bool{
       if($cmd->getName() === "fly"){
-          if($sender intanceof Player){
+          if($sender instanceof Player){
               $this->form($sender);
          } else	{
               $sender->sendMessage("§cYou Are Not A Player!");

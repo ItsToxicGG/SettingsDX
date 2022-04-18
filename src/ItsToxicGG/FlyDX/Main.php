@@ -53,5 +53,7 @@ class Main extends PluginBase{
       $form->addToggle("Toggle Fly", false);
       $form->sendToPlayer($player);
       return $form;
+  }
+} 
        
     

@@ -6,6 +6,6 @@ projects:
   FlyDX:
     path: ""
     libs:
-       - src: Vecnavium\FormsUITx\FormsUI
+       - src: Vecnavium\FormsUITx\FormsUITx
          version: ^1.1.3
 ...

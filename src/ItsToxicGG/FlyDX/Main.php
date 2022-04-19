@@ -33,7 +33,7 @@ class Main extends PluginBase{
   public function form($player){
       $form = new CustomForm(function(Player $player, array $data){ 
           if($data === null){
-              return false;
+              return true;
           }
           switch($data[1]){
               case true:
@@ -47,11 +47,19 @@ class Main extends PluginBase{
                   $player->setAllowFlight(false);
                   $player->sendMessage("§cFly is Not Active"); 
               break;
-          } 
+        }
+     
+        switch($data[2]){
+            case 0:
+                $player->sendMessage("§aYou have exited the menu!");
+            break;
+        }
+            
       });
       $form->setTitle("FlyDX UI");
       $form->addLabel("FlyDX Settings, Off OR On");
       $form->addToggle("Toggle Fly", false);
+      $form->addButton("§cExit Menu");
       $form->sendToPlayer($player);
       return $form;
   }

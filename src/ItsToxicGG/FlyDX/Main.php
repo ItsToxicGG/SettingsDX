@@ -9,7 +9,7 @@ use pocketmine\Server;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\plugin\PluginBase;
 
-use Vecnavium\FormsUI\CustomForm;
+use Vecnavium\FormsUITx\CustomForm;
 
 class Main extends PluginBase{
   

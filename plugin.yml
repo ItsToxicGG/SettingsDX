@@ -4,13 +4,3 @@ version: 1.0-beta-un
 author: ItsToxicGG
 main: ItsToxicGG\FlyDX\Main
 api: 4.0.0
-
-commands:
-  fly:
-    description: Send Form
-    permission: flydx.cmd
-
-permissions:
-  fly.cmd:
-    description: Send Form Permission
-    default: true

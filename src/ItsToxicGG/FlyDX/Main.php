@@ -9,7 +9,7 @@ use pocketmine\Server;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\plugin\PluginBase;
 
-use Vecnavium\FormsUITx\CustomForm;
+use Vecnavium\FormsUI\CustomForm;
 
 class Main extends PluginBase{
   
@@ -48,18 +48,11 @@ class Main extends PluginBase{
                   $player->sendMessage("§cFly is Not Active"); 
               break;
         }
-     
-        switch($data[2]){
-            case 0:
-                $player->sendMessage("§aYou have exited the menu!");
-            break;
-        }
             
       });
       $form->setTitle("FlyDX UI");
       $form->addLabel("FlyDX Settings, Off OR On");
       $form->addToggle("Toggle Fly", false);
-      $form->addButton("§cExit Menu");
       $form->sendToPlayer($player);
       return $form;
   }

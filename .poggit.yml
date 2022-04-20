@@ -2,6 +2,7 @@
 build-by-default: true
 branches:
 - main
+- In-Dev
 projects:
   FlyDX:
     path: ""

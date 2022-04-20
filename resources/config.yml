@@ -1,0 +1,7 @@
+# This is not ready for use
+
+# MultiWorld Support
+MW-SUPPORT: "off" # This can be on or off
+# If MW-SUPPORT is on then set all the worlds that fly does work on!
+Worlds:
+- "lobby"

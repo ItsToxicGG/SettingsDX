@@ -17,19 +17,18 @@ class Main extends PluginBase{
       $this->getLogger()->info("FlyDX has been Enabled!");
   }
   
-  public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool{
-      if($cmd->getName() === "fly"){
-          if($sender->hasPermission("fly.cmd")){
-              if($sender instanceof Player){
-                  $this->form($sender);
-              } else	{
-                  $sender->sendMessage("§cYou Are Not A Player!");
-              }
+  public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args) : bool{
+      switch($cmd->getName()){
+        case "ui":
+          if($player->hasPermission("fly.cmd")){
+            if(!$sender instanceof Player){
+              $sender->sendMessage("This Command Only Works for players! Please perform this command IN GAME!");
+            }else{
+              $this->form($sender);
+            }
           }
+        break;
       }
-
-      return true; 
-
   }
     
   public function form($player){

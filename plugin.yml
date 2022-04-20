@@ -1,6 +1,6 @@
 name: FlyDX
 description: A Simple Fly Plugin That Supports FormAPI
-version: 1.0-beta-un
+version: 1.0-beta-indev
 author: ItsToxicGG
 main: ItsToxicGG\FlyDX\Main
 api: 4.0.0

@@ -29,6 +29,7 @@ class Main extends PluginBase{
           }
         break;
       }
+      return true;
   }
     
   public function form($player){

@@ -33,7 +33,7 @@ class Main extends PluginBase{
   }
     
   public function form($player){
-      $form = new CustomForm(function(Player $player, array $data){ 
+      $form = new CustomForm(function(Player $player, $data){ 
           if($data === null){
               return;
           }

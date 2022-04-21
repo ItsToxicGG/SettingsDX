@@ -52,8 +52,6 @@ class Main extends PluginBase{
   public function onLevelChange(EntityTeleportEvent $event) : void{
       $entity = $event->getEntity(); 
       if($entity instanceof Player) $this->MWCheck($entity);
-      
-      }
   }
     
   public function FormSettings($player){

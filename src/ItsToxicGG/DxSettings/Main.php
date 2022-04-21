@@ -113,7 +113,7 @@ class Main extends PluginBase implements Listener{
       $form->addButton("Fly Settings");
       $form->addButton("NickName Settings");
       $form->addButton("NickColor Settings");
-      $this->addButton("ChatColor Settings");
+      $form->addButton("ChatColor Settings");
       $form->addButton("Exit");
       $form->sendToPlayer($player);
       return true;

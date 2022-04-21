@@ -20,19 +20,19 @@ class Main extends PluginBase{
   }
   
   private function MWCheck(Entity $entity) : bool{
-		  if(!$entity instanceof Player) return false;
-		  if($this->getConfig()->get("multi-world") === "on"){
-			        if(!in_array($entity->getWorld()->getDisplayName(), $this->getConfig()->get("worlds"))){
-				              $entity->sendMessage("§cThis world does not allow flight");
-				              if(!$entity->isCreative()){
-					                    $entity->setFlying(false);
-					                    $entity->setAllowFlight(false);
-				              }
-				              return false;
-			        }
-		  }elseif($this->getConfig()->get("multi-world") === "off") return true;
+      if(!$entity instanceof Player) return false;
+      if($this->getConfig()->get("multi-world") === "on"){
+	  if(!in_array($entity->getWorld()->getDisplayName(), $this->getConfig()->get("worlds"))){
+	      $entity->sendMessage("§cThis world does not allow flight");
+		if(!$entity->isCreative()){
+	            $entity->setFlying(false);
+		    $entity->setAllowFlight(false);
+		}
+		return false;
+	  }
+      }elseif($this->getConfig()->get("multi-world") === "off") return true;
 		  return true;
-	}
+  }
   
   public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool{
       switch($cmd->getName() === "fly"){

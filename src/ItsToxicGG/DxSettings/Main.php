@@ -1,6 +1,6 @@
 <?php
 
-namespace ItsToxicGG\FlyDX;
+namespace ItsToxicGG\DxSettings;
 
 use pocketmine\entity\Entity;
 use pocketmine\event\entity\EntityTeleportEvent;

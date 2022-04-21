@@ -16,13 +16,24 @@ use Vecnavium\FormsUI\CustomForm;
 class Main extends PluginBase{
   
   public function onEnable(): void{
-      $this->getLogger()->info("FlyDX has been Enabled!");
+      $this->getLogger()->info("§aFlyDX has been Enabled!");
+      @mkdir($this->getDataFolder());
+      $this->saveDefaultConfig();
+  }
+	
+  public function onLoad(): void{
+      $this->getLogger()->info("§6FlyDX is Loading...");
+  }
+	
+  public function onDisable(): void{
+      $this->getLogger()->info("§cFlyDX has disabled");
+      $this->getLogger()->info("§cThe Plugin may have an issue or the server closed!");
   }
   
   private function MWCheck(Entity $entity) : bool{
       if(!$entity instanceof Player) return false;
-      if($this->getConfig()->get("multi-world") === "on"){
-	  if(!in_array($entity->getWorld()->getDisplayName(), $this->getConfig()->get("worlds"))){
+      if($this->getConfig()->get("MW-SUPPORT") === "on"){
+	  if(!in_array($entity->getWorld()->getDisplayName(), $this->getConfig()->get("Worlds"))){
 	      $entity->sendMessage("§cThis world does not allow flight");
 		if(!$entity->isCreative()){
 	            $entity->setFlying(false);
@@ -30,7 +41,7 @@ class Main extends PluginBase{
 		}
 		return false;
 	  }
-      }elseif($this->getConfig()->get("multi-world") === "off") return true;
+      }elseif($this->getConfig()->get("MW-SUPPORT") === "off") return true;
 		  return true;
   }
   

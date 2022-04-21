@@ -1,6 +1,6 @@
-name: FlyDX
-description: A Simple Fly Plugin That Supports FormAPI
-version: 1.0-beta-indev
+name: SettingsDX
+description: SettingsDX is a setting plugin that supports FormsUI
+version: 1.0-fullrelease-indev
 author: ItsToxicGG
-main: ItsToxicGG\FlyDX\Main
+main: ItsToxicGG\DxSettings\Main
 api: 4.0.0

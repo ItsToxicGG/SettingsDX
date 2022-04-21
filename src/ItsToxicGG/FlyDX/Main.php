@@ -2,6 +2,8 @@
 
 namespace ItsToxicGG\FlyDX;
 
+use pocketmine\entity\Entity;
+use pocketmine\event\entity\EntityTeleportEvent;
 use pocketmine\command\CommandSender;
 use pocketmine\command\Command;
 use pocketmine\player\Player;
@@ -17,23 +19,45 @@ class Main extends PluginBase{
       $this->getLogger()->info("FlyDX has been Enabled!");
   }
   
+  private function MWCheck(Entity $entity) : bool{
+		  if(!$entity instanceof Player) return false;
+		  if($this->getConfig()->get("multi-world") === "on"){
+			        if(!in_array($entity->getWorld()->getDisplayName(), $this->getConfig()->get("worlds"))){
+				              $entity->sendMessage("§cThis world does not allow flight");
+				              if(!$entity->isCreative()){
+					                    $entity->setFlying(false);
+					                    $entity->setAllowFlight(false);
+				              }
+				              return false;
+			        }
+		  }elseif($this->getConfig()->get("multi-world") === "off") return true;
+		  return true;
+	}
+  
   public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args): bool{
-      switch($cmd->getName()){
+      switch($cmd->getName() === "fly"){
         case "ui":
           if($sender->hasPermission("fly.cmd")){
             if(!$sender instanceof Player){
-              $sender->sendMessage("This Command Only Works for players! Please perform this command IN GAME!");
+              $sender->sendMessage("§cThis Command Only Works In-Game!");
             }else{
-              $this->form($sender);
+              $this->FormSettings($sender);
             }
           }
         break;
       }
       return true;
   }
+  
+  public function onLevelChange(EntityTeleportEvent $event) : void{
+		  $entity = $event->getEntity(); 
+		  if($entity instanceof Player) $this->MWCheck($entity);
+      
+      }
+	}
     
-  public function form($player){
-      $form = new CustomForm(function(Player $player, array $data){ 
+  public function FormSettings($player){
+      $form = new CustomForm(function(Player $player, $data){ 
           if($data === null){
               return true;
           }

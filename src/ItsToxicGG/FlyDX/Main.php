@@ -35,7 +35,7 @@ class Main extends PluginBase{
   public function form($player){
       $form = new CustomForm(function(Player $player, array $data){ 
           if($data === null){
-              return true;
+              return
           }
           switch($data[1]){
               case true:

@@ -87,24 +87,24 @@ class Main extends PluginBase implements Listener{
 	  switch($data){
 	      case 0:
 		  $this->FlySettings($player);
-	          $this->sendMessage("§6Loading FlyForm...");
+	          $player->sendMessage("§6Loading FlyForm...");
 	      break;
 	      
 	      case 1:
-		  $this->sendMessage("§6This option is Comming Soon!");	
+		  $player->sendMessage("§6This option is Comming Soon!");	
 	      break;
 			  
 	      case 2:
 	          $this->NickColorSettings($player);
-	          $this->sendMessage("§6Loading NCForm...");
+	          $player->sendMessage("§6Loading NCForm...");
 	      break;
 			  
 	      case 3:
-	          $this->sendMessage("§6This option is Comming Soon!");
+	          $player->sendMessage("§6This option is Comming Soon!");
 	      break;
 			  
 	      case 4:
-	          $this->sendMessage("§cYou Have Closed The Form!");
+	          $player->sendMessage("§cYou Have Closed The Form!");
 	      break;  
 	  }
       });

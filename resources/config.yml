@@ -1,0 +1,15 @@
+# Info: This is In-Dev and Is Not Ready For Use!
+
+# Fly Settings:
+   # If FlyReset is off, when a player joins and had fly on it would reset, if on it would not reset and the player can fly without using the cmd
+   Fly-Reset: "off"
+   # MultiWorld Support
+   FLY-MW-SUPPORT: "off" # This can be on or off
+   # If MW-SUPPORT is on then set all the worlds that fly does work on!
+   Fly-Worlds:
+   - "lobby"
+# Fly Settings Close;
+# ----
+# NickName Settings:
+# Comming Soon!
+# ----

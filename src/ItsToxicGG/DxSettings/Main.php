@@ -8,6 +8,7 @@ use pocketmine\player\Player;
 use pocketmine\entity\Entity;
 use pocketmine\event\entity\EntityTeleportEvent;
 use pocketmine\event\Listener;
+use pocketmine\event\player\PlayerJoinEvent;
 // Custom Form
 use Vecnavium\FormsUI\CustomForm;
 // Simple Form
@@ -31,8 +32,8 @@ class Main extends PluginBase implements Listener{
 
    private function MWCheck(Entity $entity) : bool{
        if(!$entity instanceof Player) return false;
-       if($this->getConfig()->get("MW-SUPPORT") === "on"){
-	       if(!in_array($entity->getWorld()->getDisplayName(), $this->getConfig()->get("Worlds"))){
+       if($this->getConfig()->get("FLY-MW-SUPPORT") === "on"){
+	       if(!in_array($entity->getWorld()->getDisplayName(), $this->getConfig()->get("Fly-Worlds"))){
 		       $entity->sendMessage(self::PREFIX . TextFormat::RED . "This world does not allow flight");
 		       if(!$entity->isCreative()){
 			    $entity->setFlying(false);
@@ -40,8 +41,17 @@ class Main extends PluginBase implements Listener{
 		       }
 		       return false;
 	       }
-       }elseif($this->getConfig()->get("MW-SUPPORT") === "off") return true;
+       }elseif($this->getConfig()->get("FLY-MW-SUPPORT") === "off") return true;
        return true;
+   }
+
+   public function onJoin(PlayerJoinEvent $event) : void{
+	$player = $event->getPlayer();
+	if($this->getConfig()->get("JoinReset") === true){
+		if($player->isCreative()) return;
+		$player->setAllowFlight(false);
+		$player->sendMessage($this->getConfig()->get("DisableMSG"));
+	}
    }
 
    public function onLevelChange(EntityTeleportEvent $event) : void{

@@ -12,17 +12,17 @@ use Vecnavium\FormsUI\SimpleForm;
 class Main extends PluginBase{
    
    public function onLoad(): void{
-       $this->getLogger()->info("Loading DxSettings");
+       $this->getLogger()->info("§6Loading DxSettings");
    }
    
    public function onEnable(): void{
-      $this->getLogger()->info("Enabled DxSettings");
-      $this->getLogger()->info("Warning: This is an In-Dev + Recode Version");
+      $this->getLogger()->info("§aEnabled DxSettings");
+      $this->getLogger()->info("§cWarning: This is an In-Dev + Recode Version");
    }
       
    public function onDisable(): void
-       $this->getLogger()->info("Disabled DxSettings");
-       $this->getLogger()->info("This might be caused by an error, pls contact or report an issue on github!");
+       $this->getLogger()->info("§cDisabled DxSettings");
+       $this->getLogger()->info("§4This might be caused by an error, pls contact or report an issue on github!");
    }
 
    public function DxSettings($player){ 
@@ -33,7 +33,7 @@ class Main extends PluginBase{
 	      
 	        switch($data){
 	            case 0:
-		             $this->FlySettings($player);
+		        $this->FlySettings($player);
 	                $player->sendMessage("§6Loading FlyForm...");
 	            break;
 	      
@@ -42,7 +42,7 @@ class Main extends PluginBase{
 	            break;
 			  
 	            case 2:
-                   $this->NickColorSettings($player);
+                        $this->NickColorSettings($player);
 	                $player->sendMessage("§6This option is Comming Soon!");
 	            break;
 			  
@@ -85,8 +85,8 @@ class Main extends PluginBase{
                break;
            } 
          });
-         $form->setTitle("FlyDX UI");
-         $form->addLabel("FlyDX Settings, Off OR On");
+         $form->setTitle("§cFly Settings");
+         $form->addLabel("§aFly Settings, §6Powered by DX/DCTX");
          $form->addToggle("Toggle Fly", false);
          $form->sendToPlayer($player);
          return $form;
@@ -99,30 +99,37 @@ class Main extends PluginBase{
 	        }
 	        switch($data){
 	            case 0:
-		             $player->setDisplayName("§f" . $player->getName() . "§f");
-		             $player->setNameTag("§f" . $player->getName() . "§f");
-		             $player->sendMessage("§aYour Name has been change to white!");
+		        $player->setDisplayName("§f" . $player->getName() . "§f");
+		        $player->setNameTag("§f" . $player->getName() . "§f");
+		        $player->sendMessage("§aYour Name has been change to white!");
 	            break;
 
 	            case 1:
-		             $player->setDisplayName("§c" . $player->getName() . "§f");
+		        $player->setDisplayName("§c" . $player->getName() . "§f");
 	                $player->setNameTag("§c" . $player->getName() . "§f");
-		             $player->sendMessage("§aYour Name has been change to Red!");
+		        $player->sendMessage("§aYour Name has been change to Red!");
 	            break;
 
 	            case 2:
-		             $player->setDisplayName("§b" . $player->getName() . "§f");
-		             $player->setNameTag("§b" . $player->getName() . "§f");
-		             $player->sendMessage("§aYour Name has been change to Blue!");
+		        $player->setDisplayName("§b" . $player->getName() . "§f");
+		        $player->setNameTag("§b" . $player->getName() . "§f");
+			$player->sendMessage("§aYour Name has been change to Blue!");
+	            break;
+				
+		    case 3:
+		        $player->setDisplayName("§a" . $player->getName() . "§f");
+		        $player->setNameTag("§a" . $player->getName() . "§f");
+			$player->sendMessage("§aYour Name has been change to Green!");
 	            break;
 	        }
 	      return true;
 	      });
-	        $form->setTitle("NickName-Color Settings");
-	        $form->setContent("Select a color to your nickname!");
-	        $form->addButton("White");
+	        $form->setTitle("§6NickName-Color §cSettings");
+	        $form->setContent("§fSelect a color to your nickname!");
+	        $form->addButton("§fWhite");
 	        $form->addButton("§cRed");
 	        $form->addButton("§bBlue");
+	        $form->addButton("§aGreen");
 	        $form->sendToPlayer($player);
 	        return $form;
    }

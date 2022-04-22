@@ -25,7 +25,7 @@ class Main extends PluginBase implements Listener{
       $this->getLogger()->info("§cWarning: This is an In-Dev + Recode Version");
    }
       
-   public function onDisable(): void
+   public function onDisable(): void{
        $this->getLogger()->info("§cDisabled DxSettings");
        $this->getLogger()->info("§4This might be caused by an error, pls contact or report an issue on github!");
    }

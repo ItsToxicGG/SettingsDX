@@ -4,12 +4,16 @@ namespace ItsToxicGG\DxSettings;
 // Pocketmine-MP
 use pocketmine\plugin\PluginBase;
 use pocketmine\player\Player;
+// Entity & Event
+use pocketmine\entity\Entity;
+use pocketmine\event\entity\EntityTeleportEvent;
+use pocketmine\event\Listener;
 // Custom Form
 use Vecnavium\FormsUI\CustomForm;
 // Simple Form
 use Vecnavium\FormsUI\SimpleForm;
 
-class Main extends PluginBase{
+class Main extends PluginBase implements Listener{
    
    public function onLoad(): void{
        $this->getLogger()->info("§6Loading DxSettings");
@@ -25,6 +29,26 @@ class Main extends PluginBase{
        $this->getLogger()->info("§4This might be caused by an error, pls contact or report an issue on github!");
    }
 
+   private function MWCheck(Entity $entity) : bool{
+       if(!$entity instanceof Player) return false;
+       if($this->getConfig()->get("MW-SUPPORT") === "on"){
+	       if(!in_array($entity->getWorld()->getDisplayName(), $this->getConfig()->get("Worlds"))){
+		       $entity->sendMessage(self::PREFIX . TextFormat::RED . "This world does not allow flight");
+		       if(!$entity->isCreative()){
+			    $entity->setFlying(false);
+			    $entity->setAllowFlight(false);
+		       }
+		       return false;
+	       }
+       }elseif($this->getConfig()->get("MW-SUPPORT") === "off") return true;
+       return true;
+   }
+
+   public function onLevelChange(EntityTeleportEvent $event) : void{
+	$entity = $event->getEntity();
+	if($entity instanceof Player) $this->MWCheck($entity);
+   }
+
    public function DxSettings($player){ 
        $form = new SimpleForm(function(Player $player, $data){
 	        if($data === null){
@@ -38,7 +62,7 @@ class Main extends PluginBase{
 	            break;
 	      
 	            case 1:
-		             $player->sendMessage("§6This option is Comming Soon!");	
+		        $player->sendMessage("§6This option is Comming Soon!");	
 	            break;
 			  
 	            case 2:

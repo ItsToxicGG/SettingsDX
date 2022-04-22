@@ -17,7 +17,7 @@ use Vecnavium\FormsUI\SimpleForm;
 class Main extends PluginBase implements Listener{
    
    public function onLoad(): void{
-       $this->getLogger()->info("§6Loading DxSettings");
+       $this->getLogger()->info("§6Loading DxSettings...");
    }
    
    public function onEnable(): void{
